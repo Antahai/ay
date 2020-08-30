@@ -1,0 +1,14 @@
+title Tehtävä 0.6
+
+
+selain->palvelin: HTTP POST https://studies.cs.helsinki.fi/exampleapp/notes/new_note_spa
+
+note over palvelin:
+Palvelin ottaa vastaan uuden noten, ja tallettaa sen.
+end note
+
+note over selain:
+Selain päivittää uuden noten HTML-koodiin, eikä sivun uudelleen latausta tarvita.
+end note
+
+

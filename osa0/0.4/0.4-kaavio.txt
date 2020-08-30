@@ -1,0 +1,34 @@
+title Tehtävä 0.4
+
+
+selain->palvelin: HTTP POST https://studies.cs.helsinki.fi/exampleapp/notes/new_note
+
+note over palvelin:
+Palvelin ottaa vastaan uuden noten, ja tallettaa sen.
+end note
+
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes/
+
+palvelin-->selain: HTML
+
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+palvelin-->selain: main.css
+
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+palvelin-->selain: main.js
+
+note over selain:
+selain alkaa suorittaa js-koodia
+joka pyytää JSON-datan palvelimelta
+end note
+
+
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+palvelin-->selain: data.json
+
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/favicon.ico
+palvelin-->selain: favicon.ico
+
+note over selain:
+Selain rendaa päivitetyn sivun näytölle
+end note
