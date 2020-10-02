@@ -36,21 +36,6 @@
       "id": 9
     },
     {
-      "name": "asdas",
-      "number": "123123",
-      "id": 10
-    },
-    {
-      "name": "wdasfd",
-      "number": "123123",
-      "id": 11
-    },
-    {
-      "name": "asdasdf",
-      "number": "12124",
-      "id": 12
-    },
-    {
       "name": "Arto Seppälä",
       "number": "234234234",
       "id": 13
@@ -64,6 +49,11 @@
       "name": "Apple Bobble",
       "number": "12345",
       "id": 16
+    },
+    {
+      "name": "Golf Golo",
+      "number": "12039019283",
+      "id": 17
     }
   ]
 }

@@ -101,12 +101,12 @@ const App = () => {
              setAlertMessage(null)
              },4000)}
          )
+       .then(()=>{setPersons(persons.filter (n=> n.id !== deleteId))})
        .catch(error => {
          setErrorMessage(personToKill + ' is already removed from phonebook')
          setTimeout(()=> {
            setErrorMessage(null)
          },4000)
-         setPersons(persons.filter (n=> n.id !== deleteId))
          })
        }
  
