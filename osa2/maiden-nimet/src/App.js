@@ -57,7 +57,7 @@ function App() {
 
   return (
     <div className="App">
-
+{/*-------------- form to write country name ---------------------*/}
     <Form value={selectedCountry} onChange={handleSelectedCountry}/>
 
 {/*-------------- if more than 10 countries ----------------------*/}
