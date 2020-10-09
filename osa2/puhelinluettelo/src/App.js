@@ -1,3 +1,4 @@
+import { render } from '@testing-library/react'
 import React, { useState, useEffect } from 'react'
 // import axios from 'axios'
 import Filter from './components/filter'
@@ -14,6 +15,7 @@ const App = () => {
   const [ deleteId, setDeleteId ] = useState([])
   const [alertMessage, setAlertMessage] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
+  
 
   
   useEffect(() => {
@@ -24,7 +26,8 @@ const App = () => {
       })
   }, [])
 
-
+  console.log(persons.length)
+  
 // --------NEW BOOKING -------------------------//
   const addNewName = (event) => {
     event.preventDefault()
@@ -36,9 +39,13 @@ const App = () => {
    // if name already exists, will ask to change number
    if (isAlready) { 
     if(window.confirm(`Name ${newName} already exists, do you want to update the number?`)){
+      const idToUpdate = persons.find(x=> x.name === newName)
+      
       const phoneBookObject = {
         name: newName,
-        number: newNro
+        number: newNro,
+        id: idToUpdate.id
+        
       } 
       const personIdToUpdate = persons.find(x=> x.name === newName).id
 
@@ -52,14 +59,12 @@ const App = () => {
       setPersons(personsToChange)
     })
     .then(setAlertMessage(newName + '´s number is now updated!'))
-    .then(
-      setTimeout(() => {
-        setAlertMessage(null)
-      }, 4000)
-    )
       
     } 
     // if name is new -> 
+   } else if(newName === ''){setErrorMessage('Name is missing')
+   } else if(newNro === ''){setErrorMessage('Number is missing')
+   
    } else {
 
     const phoneBookObject = {
@@ -73,15 +78,16 @@ const App = () => {
         setPersons(persons.concat(returnedData))
       }
       ).then(setAlertMessage(newName + ' is now added to phone Bookkel'))
-      .then(
-        setTimeout(() => {
-          setAlertMessage(null)
-        }, 4000)
-      )
+      .catch(error => {
+        setErrorMessage(error.response.data.error)
+      })
+      
    }
    // reset states
    setNewName('')
    setNewNro('')
+   setTimeout(() => { setErrorMessage(null)}, 4000)
+   setTimeout(() => { setAlertMessage(null)}, 4000)
   }
   // --------DELETE BOOKING -------------------------//
   const handleDelete = (event) => {
@@ -183,6 +189,7 @@ const App = () => {
       />
       <h2>Numbers</h2>
       <Book person={personsToShow} />
+      <p>{persons.length === 0 && '...loading'}</p>
     </div>
   )
 
